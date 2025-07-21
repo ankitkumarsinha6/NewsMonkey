@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+NewsMonkey: Your Daily Dose of News!
+📝 Description
+NewsMonkey is a dynamic web application built with React.js (Class-Based Components) that provides users with a quick and easy way to browse daily news headlines across various categories. Leveraging the News API, it fetches and displays up-to-date articles, offering a smooth user experience with features like:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Categorized News: Explore headlines across Business, Entertainment, General, Health, Science, Sports, and Technology.
 
-## Available Scripts
+Infinite Scrolling: Efficiently load more news articles as you scroll down, providing a seamless Browse experience.
 
-In the project directory, you can run:
+Top Loading Bar: A visual indicator (using react-top-loading-bar) to show data fetching progress, enhancing user feedback.
 
-### `npm start`
+Responsive Design: Built with Bootstrap 5 for a mobile-first, responsive layout that looks great on any device.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project was developed as an exercise to deepen understanding of React's class-based components, lifecycle methods, state management, props, and routing.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+📸 Screenshot
+screenshots/firsthomepage.png
 
-### `npm test`
+🚀 Technologies Used
+React.js (Class-Based Components): Core JavaScript library for building the user interface.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React Router DOM: For handling client-side routing and navigation between news categories.
 
-### `npm run build`
+News API: The external REST API used to fetch news articles.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Bootstrap 5: CSS framework for styling and responsive layout.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+react-top-loading-bar: A React component for displaying a progress bar at the top of the page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+react-infinite-scroll-component: A component for easily implementing infinite scrolling.
 
-### `npm run eject`
+prop-types: For runtime type checking of props (development only).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+🛠️ Installation and Setup
+To get a local copy up and running, follow these simple steps.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Prerequisites:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Node.js (LTS version recommended)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm (comes with Node.js) or Yarn
 
-## Learn More
+1. Clone the repository:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Bash
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+git clone [(https://github.com/ankitkumarsinha6/NewsMonkey.git)]
+cd NewsMonkey
+2. Install dependencies:
 
-### Code Splitting
+Bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm install
+# OR
+yarn install
+3. Obtain a News API Key:
 
-### Analyzing the Bundle Size
+Go to https://newsapi.org/register and sign up for a free API key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Important: For security and flexibility, it's recommended to use environment variables for your API key.
 
-### Making a Progressive Web App
+Create a file named .env.local in the root of your project (same level as package.json).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Add your API key to this file:
 
-### Advanced Configuration
+REACT_APP_NEWS_API_KEY=YOUR_ACTUAL_NEWS_API_KEY_HERE
+(Replace YOUR_ACTUAL_NEWS_API_KEY_HERE with the key you obtained).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Then, in your src/components/News.js file, replace your hardcoded API key (6252ed4b02e84bebbfd10c72467cf520) with:
 
-### Deployment
+JavaScript
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+(Do this for both updateNews and fetchMoreData methods).
 
-### `npm run build` fails to minify
+4. Run the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Bash
+
+npm start
+# OR
+yarn start
+This will open the application in your browser at http://localhost:3000.
+
+📦 Project Structure
+NewsMonkey/
+├── public/                 # Public assets (index.html, favicon, etc.)
+│   └── assets/             # Recommended folder for images/screenshots within public
+│       └── screenshot.png  # Your project screenshot
+├── src/
+│   ├── components/
+│   │   ├── NavBar.js       # Navigation bar component
+│   │   ├── News.js         # Main component for fetching and displaying news
+│   │   ├── NewsItem.js     # Individual news card component
+│   │   ├── Spinner.js      # Loading spinner component
+│   │   └── loading.gif     # Loading animation GIF
+│   ├── App.css             # Styling for the App component
+│   ├── App.js              # Main application component (routing, loading bar)
+│   ├── index.css           # Global styling
+│   ├── index.js            # React app entry point
+│   └── reportWebVitals.js  # Web Vitals reporting (optional)
+├── .env.local              # Environment variables (e.g., REACT_APP_NEWS_API_KEY)
+├── .gitignore              # Specifies intentionally untracked files to ignore
+├── package.json            # Project dependencies and scripts
+└── README.md               # This file
+🤝 Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. Don't forget to give the project a star!
+
+Fork the Project
+
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+
+Push to the Branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+📄 License
+Distributed under the MIT License. See LICENSE for more information. (You might want to create a LICENSE file in your root directory if you don't have one).
+
+📧 Contact
+Ankit Kumar Sinha - ankitkumarsinha6@gmail.com
+Project Link: (https://github.com/ankitkumarsinha6/NewsMonkey.git)
+
