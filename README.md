@@ -13,7 +13,7 @@ Responsive Design: Built with Bootstrap 5 for a mobile-first, responsive layout 
 This project was developed as an exercise to deepen understanding of React's class-based components, lifecycle methods, state management, props, and routing.
 
 📸 Screenshot
-screenshots/firsthomepage.png
+[screenshots/firsthomepage.png]
 
 🚀 Technologies Used
 React.js (Class-Based Components): Core JavaScript library for building the user interface.
