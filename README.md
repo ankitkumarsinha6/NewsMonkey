@@ -14,6 +14,7 @@ This project was developed as an exercise to deepen understanding of React's cla
 
 📸 Screenshot
 ![NewsMonkey App Screenshot](screenshots/firsthomepage.png)
+![NewsMonkey App Screenshot](screenshots/secondhomepageofhealth.png)
 
 🚀 Technologies Used
 React.js (Class-Based Components): Core JavaScript library for building the user interface.
